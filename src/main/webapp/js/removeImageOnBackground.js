@@ -1,0 +1,1 @@
+$("#allBelowHeader").removeClass("imageOnBackground")

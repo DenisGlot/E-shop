@@ -1,0 +1,22 @@
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #b36a85;
+  border: .05rem solid #07ff00;
+  border: 2px solid #7d4b56
+}
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+
+.cover {
+  padding: 0 1.5rem;
+}
+.cover .btn-lg {
+  padding: .75rem 1.25rem;
+  font-weight: 700;
+}
