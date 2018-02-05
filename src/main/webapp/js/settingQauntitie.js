@@ -1,12 +1,15 @@
 $(document).ready(function(){
 	var isSubmitting = false;
+    var $this;
     $('.minus-btn').on('click', function(e) {
 		e.preventDefault();
+        $this = $(this);
 		setAndSendQuantity("-");
 	});
 
     $('.plus-btn').on('click', function(e) {
 		e.preventDefault();
+        $this = $(this);
 		setAndSendQuantity("+");
 	});
 
@@ -15,15 +18,12 @@ $(document).ready(function(){
 			return;
 		}
 		isSubmitting =true;
-		var $this = $(this);
 		var post_url = $this.attr('action');
 		var $input = $this.closest('div').find('input');
 		var $totalprice = $this.closest('div').next();
 		var price = parseInt($this.closest('div').prev().find('.priceOfProduct').text());
 		var value = parseInt($input.val());
-        alert("Before " + value);
         value = calculateQuantity(sign,value);
-        alert("After " + value);
 		$input.val(value);
 		$totalprice.html(value*price + '$');
 

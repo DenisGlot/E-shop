@@ -39,7 +39,7 @@
             <li <%= request.getAttribute("javax.servlet.forward.request_uri").equals("/")?"class=\"active\"":""%> ><a href="/">Home</a></li>
             <li <%= request.getAttribute("javax.servlet.forward.request_uri").equals("/register")?"class=\"active\"":""%> ><a href="/register">Registration</a></li>
             <li <%= request.getAttribute("javax.servlet.forward.request_uri").equals("/login")?"class=\"active\"":""%> ><a href="/login">Log in</a></li>
-            <li <%= request.getAttribute("javax.servlet.forward.request_uri").equals("/card")?"class=\"active\"":""%> ><a href="/card">Cart</a></li>
+            <li <%= request.getAttribute("javax.servlet.forward.request_uri").equals("/card")?"class=\"active\"":""%> ><a href="/card">Card</a></li>
             <li <%= request.getAttribute("javax.servlet.forward.request_uri").equals("/feedback")?"class=\"active\"":""%> ><a href="/feedback">Feedback</a></li>
           </ul>
         </div><!--/.nav-collapse -->

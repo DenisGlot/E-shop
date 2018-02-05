@@ -23,8 +23,15 @@ public class ShoppingCardController extends TemplateController {
 
     @Override
     protected View doLogicAndReturnView(HttpServletRequest request, HttpServletResponse response) {
-        return View.CARD;
+    	String clientBuy = request.getParameter("buy");
+    	if(isBuying(clientBuy)){
+
+		}
+    	return View.CARD;
     }
+    private boolean isBuying(String clientBuy){
+    	return clientBuy!=null && clientBuy.equals("yes");
+	}
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

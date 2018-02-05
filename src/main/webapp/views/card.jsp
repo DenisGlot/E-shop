@@ -1,51 +1,36 @@
-<%@page import="java.util.Map.Entry"%>
-<%@page import="com.denisgl.dao.entities.Product"%>
-<%@page import="com.denisgl.models.ShoppingCard"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/pages/layout/header.jsp">
    <jsp:param value="Shopping Card" name="title"/>
-   <jsp:param value="js/settingQuantitie.js" name="js"/>
+   <jsp:param value="js/setQauntity.js" name="js"/>
    <jsp:param value="css/card.css" name="css"/>
 </jsp:include>
     <form id =\"myForm\">
 		<div class="shopping-cart">
-				<div class="title">Shopping Bag</div>
-				<% 
-				   ShoppingCard card = (ShoppingCard) session.getAttribute("card");
-				   if(card.size()==0) {
-			    %>
+			<div class="title">Shopping Bag</div>
+			<c:choose>
+				<c:when test = "${card.size()==0}">
 					<h1 style="text-align:  center;">You haven't chosen anything</h1>
-				<% 
-				    } else {
-						 for (Entry<Product, Integer> orderUnit : card.getProducts().entrySet()) {
-							 //Variables
-							 Product product = orderUnit.getKey();
-							 Integer quantityInMemory = orderUnit.getValue();
-							 //
-							 out.println("<div id=\"" + product.getProductid() + "\" class=\"item\">");
-							 out.println(
-									"   <div class=\"buttons\"><span class=\"delete-btn\"></span><span class=\"like-btn\"></span></div>");
-							 out.println("   <div class=\"image\"><img src=\"" + product.getUrlofimg() + "\" alt=\"\" width=\"120\" height=\"80\" /></div>");
-							 out.println("   <div class=\"description\"><span>" + product.getName() + "</span><span name=\"price\" class = \"priceOfProduct\">"
-									+ product.getPrice()+ "$</span></div>");
-							 out.println("   <div class=\"quantity\">");
-							 out.println("    <button class=\"plus-btn\">");
-							 // Image plus
-							 out.println("        <img src=\"https://designmodo.com/demo/shopping-cart/plus.svg\" alt=\"\" />");
-							 out.println("    </button>");
-							 out.println("    <input class=\"quantityOfProduct\" type=\"submit\" name=\"quantity\" value=\"" + quantityInMemory + "\">");
-							 out.println("    <button class=\"minus-btn\">");
-							 // Image Minus
-							 out.println("      <img src=\"https://designmodo.com/demo/shopping-cart/minus.svg\" alt=\"\" />");
-							 out.println("    </button>");
-							 out.println("   </div>");
-							 out.println("   <div class=\"total-price\">" + product.getPrice() * quantityInMemory + "$</div>");
-							 out.println("</div>");
-					  }
-						out.println("<div style = \"text-align: center;\">");
-						out.println("    <a  href= \"/card?buy=yes\" class = \"btn\">Buy it</a>");
-						out.println("</div>");
-			      }
-			   %>
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${card.products}" var="entry">
+						<div id="${entry.key.productid}" class="item">
+							<div class="image"><img src="${entry.key.urlofimg}" alt="" width="120" height="80" /></div>
+							<div class="description"><span>${entry.key.name}</span><span name="price" class = "priceOfProduct">${entry.key.price}$</span></div>
+							<div class="quantity">
+								<button class="plus-btn" type="submit">
+									<img class ="plus-img" src="https://designmodo.com/demo/shopping-cart/plus.svg" alt="" />
+								</button>
+								<input class="quantityOfProduct" type="submit" name="quantity" value="${entry.value}">
+								<button class="minus-btn" type="submit">
+								   	<img class ="minus-img" src="https://designmodo.com/demo/shopping-cart/minus.svg" alt="" />
+								</button>
+							</div>
+							<div class="total-price">${entry.key.price * entry.value}$</div>
+						</div>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
+			<a class= "btn btn-lg" href="/card?buy=yes"></a>
 		</div>
     </form>
 
