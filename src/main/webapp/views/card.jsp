@@ -6,8 +6,8 @@
    <jsp:param value="js/settingQuantitie.js" name="js"/>
    <jsp:param value="css/card.css" name="css"/>
 </jsp:include>
+    <form id =\"myForm\">
 		<div class="shopping-cart">
-			 <form id ="myForm" method="post">
 				<div class="title">Shopping Bag</div>
 				<% 
 				   ShoppingCard card = (ShoppingCard) session.getAttribute("card");
@@ -26,27 +26,27 @@
 									"   <div class=\"buttons\"><span class=\"delete-btn\"></span><span class=\"like-btn\"></span></div>");
 							 out.println("   <div class=\"image\"><img src=\"" + product.getUrlofimg() + "\" alt=\"\" width=\"120\" height=\"80\" /></div>");
 							 out.println("   <div class=\"description\"><span>" + product.getName() + "</span><span name=\"price\" class = \"priceOfProduct\">"
-									+ product.getPrice(), 2 + "$</span></div>");
+									+ product.getPrice()+ "$</span></div>");
 							 out.println("   <div class=\"quantity\">");
-							 out.println("    <button class=\"plus-btn\" type=\"submit\">");
+							 out.println("    <button class=\"plus-btn\">");
 							 // Image plus
 							 out.println("        <img src=\"https://designmodo.com/demo/shopping-cart/plus.svg\" alt=\"\" />");
 							 out.println("    </button>");
 							 out.println("    <input class=\"quantityOfProduct\" type=\"submit\" name=\"quantity\" value=\"" + quantityInMemory + "\">");
-							 out.println("    <button class=\"minus-btn\" type=\"submit\">");
+							 out.println("    <button class=\"minus-btn\">");
 							 // Image Minus
 							 out.println("      <img src=\"https://designmodo.com/demo/shopping-cart/minus.svg\" alt=\"\" />");
 							 out.println("    </button>");
 							 out.println("   </div>");
-							 out.println("   <div class=\"total-price\">" + product.getPrice(), 2 * quantityInMemory + "$</div>");
+							 out.println("   <div class=\"total-price\">" + product.getPrice() * quantityInMemory + "$</div>");
 							 out.println("</div>");
 					  }
+						out.println("<div style = \"text-align: center;\">");
+						out.println("    <a  href= \"/card?buy=yes\" class = \"btn\">Buy it</a>");
+						out.println("</div>");
 			      }
 			   %>
-				</div>
-			</form>
-			<form method="get">
-		       <button id="submitButton" type="submit" class="btn btn-primary" style ="text-align: center;">Buy it</button>
-		    </form>
 		</div>
+    </form>
+
 <jsp:include page="/pages/layout/footer.jsp"/>

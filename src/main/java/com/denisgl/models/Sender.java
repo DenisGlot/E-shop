@@ -16,8 +16,8 @@ public class Sender {
 	
 	private static final Logger logger = Logger.getLogger(Sender.class);
 
-	protected final static String usernameOfMyMail = "denisglotov.1911@gmail.com";
-	protected final static String passwordOfMyMail = "123456asdzxcv";
+	private final static String usernameOfMyMail = "denisglotov.1911@gmail.com";
+	private final static String passwordOfMyMail = "123456asdzxcv";
 	
 	static Session session;
 	

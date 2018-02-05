@@ -75,6 +75,12 @@ public enum View {
 			return "messages/productError";
 		}
 	},
+	CATEGORYERROR{
+		@Override
+		public String getName() {
+			return "messages/categoryError";
+		}
+	},
 	NONFORWARD {
 		@Override
 		public String getName() {

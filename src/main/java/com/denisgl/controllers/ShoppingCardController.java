@@ -23,7 +23,6 @@ public class ShoppingCardController extends TemplateController {
 
     @Override
     protected View doLogicAndReturnView(HttpServletRequest request, HttpServletResponse response) {
-    	
         return View.CARD;
     }
     
@@ -31,7 +30,7 @@ public class ShoppingCardController extends TemplateController {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
     	JsonObject data = new Gson().fromJson(request.getReader(), JsonObject.class);
-    	
+
 		if (data != null) {
 			HttpSession session = request.getSession();
 			setQuantityInSessionCard(data, session);
@@ -46,11 +45,17 @@ public class ShoppingCardController extends TemplateController {
     }
     
     private int declareProductId(JsonObject data) {
+    	if(data.get("productId") == null){
+    		return 0;
+		}
     	String productIdString = data.get("productId").getAsString();
     	return Integer.parseInt(productIdString);
     }
     
     private int declareQuantity(JsonObject data) {
+		if(data.get("quantity") == null){
+			return 0;
+		}
     	String quantityString = data.get("quantity").getAsString();
 		return Integer.parseInt(quantityString);
 	}
