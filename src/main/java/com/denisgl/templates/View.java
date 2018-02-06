@@ -81,6 +81,12 @@ public enum View {
 			return "messages/categoryError";
 		}
 	},
+	CARDSUCCESS{
+		@Override
+		public String getName() {
+			return "messages/cardSuccess";
+		}
+	},
 	NONFORWARD {
 		@Override
 		public String getName() {

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.denisgl.cache.realization.ProductCache;
 import com.denisgl.dao.entities.Product;
+import com.denisgl.models.BuyerProducts;
 import com.denisgl.models.ShoppingCard;
 import com.denisgl.templates.TemplateController;
 import com.denisgl.templates.View;
@@ -25,12 +26,20 @@ public class ShoppingCardController extends TemplateController {
     protected View doLogicAndReturnView(HttpServletRequest request, HttpServletResponse response) {
     	String clientBuy = request.getParameter("buy");
     	if(isBuying(clientBuy)){
-
+    		HttpSession session = request.getSession();
+            buyProductsAndClearCard(session);
+            return View.CARDSUCCESS;
 		}
     	return View.CARD;
     }
     private boolean isBuying(String clientBuy){
     	return clientBuy!=null && clientBuy.equals("yes");
+	}
+	private void buyProductsAndClearCard(HttpSession session){
+		ShoppingCard card = (ShoppingCard) session.getAttribute("card");
+		BuyerProducts.buyAllFromCard(card);
+		card.removeAllProducts();
+		session.setAttribute("card", card);
 	}
     
     @Override

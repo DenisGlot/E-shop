@@ -99,7 +99,6 @@ public abstract class CacheImpl<K, E> implements Cache<K, E> {
 	public List<E> getAllByCriteria(String name, Object like){
 		return putListIfPossibleAndReturn(dao.getAllByCriteria(name, like));
 	}
-	
 	@Override
 	public List<E> getAll(){
 		return putListIfPossibleAndReturn(dao.getAll());
@@ -123,7 +122,6 @@ public abstract class CacheImpl<K, E> implements Cache<K, E> {
 	/**
 	 * @throws NullPointerException
 	 */
-	@SuppressWarnings("unchecked")
 	private K declareKey(E entity){
 		try {
 			return (K) fieldWithKey.get(entity);

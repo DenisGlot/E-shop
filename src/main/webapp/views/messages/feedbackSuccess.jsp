@@ -1,5 +1,3 @@
-
-<%@page import="java.util.Calendar"%>
 <jsp:include page="/pages/layout/header.jsp">
    <jsp:param value="Thank you!" name="title"/>
    <jsp:param value="" name="js"/>
