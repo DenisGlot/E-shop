@@ -30,7 +30,7 @@
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
-			<a class= "btn btn-lg" href="/card?buy=yes"></a>
+			<a class= "btn btn-lg btn-secondary" href="/card?buy=yes">Buy it</a>
 		</div>
     </form>
 

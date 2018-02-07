@@ -87,6 +87,12 @@ public enum View {
 			return "messages/cardSuccess";
 		}
 	},
+	REGISTERSUCCESS{
+		@Override
+		public String getName() {
+			return "messages/registerSuccess";
+		}
+	},
 	NONFORWARD {
 		@Override
 		public String getName() {

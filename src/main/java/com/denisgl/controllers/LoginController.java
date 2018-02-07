@@ -54,7 +54,8 @@ public class LoginController extends TemplateController {
 		} else {
 			user =  UserCache.getCache().findById(phoneOrEmail);
 		}
-    	session.setAttribute("email", phoneOrEmail);
+    	session.setAttribute("email", user.getEmail());
+    	session.setAttribute("phone",user.getPhone());
     	return user;
     }
 }

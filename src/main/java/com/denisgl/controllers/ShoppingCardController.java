@@ -1,6 +1,7 @@
 package com.denisgl.controllers;
 
 import java.io.IOException;
+import java.util.LinkedList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.denisgl.cache.realization.ProductCache;
-import com.denisgl.dao.entities.Product;
 import com.denisgl.models.BuyerProducts;
 import com.denisgl.models.ShoppingCard;
 import com.denisgl.templates.TemplateController;
@@ -44,7 +44,6 @@ public class ShoppingCardController extends TemplateController {
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
     	JsonObject data = new Gson().fromJson(request.getReader(), JsonObject.class);
 
 		if (data != null) {
