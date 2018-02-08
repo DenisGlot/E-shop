@@ -5,7 +5,7 @@
     <welcome-file>/home</welcome-file>
   </welcome-file-list>
 
-  <!--Allows embedded jetty use welcome list-->
+  <!--Allows embedded jetty use welcome list as Servlet-->
   <context-param>
     <param-name>org.eclipse.jetty.servlet.Default.welcomeServlets</param-name>
     <param-value>true</param-value>
