@@ -46,18 +46,22 @@ public class RegisterController extends TemplateController {
         String email = data.get("email").getAsString();
         String password = data.get("password").getAsString();
         String passwordHash = Hashing.sha1(password);
+
         if(!isUniqueEmail(email)){
-            response.sendError(406,"email");
+            response.sendError(401,"email");
             return;
         }
         if(!isUniquePhone(phone)){
             response.sendError(406,"phone");
             return;
         }
-        User user = User.newBuilder().setFirstName(firstName).setLastName(lastName).setPhone(phone).setEmail(email).setPassword(passwordHash).build();
-        saveUser(user);
+
+        User user = User.newBuilder().setFirstName(firstName).setLastName(lastName).setPhone(phone).setEmail(email).setPassword(password).setGruopId(2).build();
         sendMessageToEmail(user);
-        letPassThroughFilter(request,user);
+        user.setPassword(passwordHash);
+        if(saveUser(user)) {
+            letPassThroughFilter(request, user);
+        }
         user = null;
     }
 
@@ -76,8 +80,8 @@ public class RegisterController extends TemplateController {
         return false;
     }
 
-    private void saveUser(User user){
-        UserCache.getCache().save(user);
+    private boolean saveUser(User user){
+        return UserCache.getCache().save(user);
     }
     private void sendMessageToEmail(User user){
         Sender.sendPassword(user.getEmail(),user.getPassword());

@@ -25,9 +25,9 @@ $(document).ready(function(){
                 isSubmitting=false;
             },
             error: function(jqXHR, exception,errorThrown) {
-                if(errorThrown == "phone"){
+                if(jqXHR.status == 406){
                     $('#error-unique').text("Your phone is already signed up");
-                } else {
+                } else if(jqXHR.status == 401){
                     $('#error-unique').text("Your email is already signed up");
                 }
                 isSubmitting=false;
