@@ -79,7 +79,7 @@
                     </httpConnector>
                 </configuration>
             </plugin>
-            <!-- For proper running Jetty on Heroku -->
+            <!-- For proper running jetty on heroku -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -103,7 +103,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- End of needed configuration for Jetty on Heroku -->
+            <!-- -->
         </plugins>
     </build>
 </project>
