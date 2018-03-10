@@ -10,27 +10,27 @@
 		   <h1 style ="color : red;" id ="error-unique"></h1>
 	       <div class="form-group">
 	          <label for="fname">First Name</label>
-	         <input id ="fname" type="text" class="form-control" id="first" aria-describedby="emailHelp" placeholder="Enter first name">
+	          <input id ="fname" name ="fname" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter first name">
 	       </div>
 	       <div class="form-group">
 	          <label for="lname">Last Name</label>
-	          <input id = "lname" type="text" class="form-control" id="last" aria-describedby="emailHelp" placeholder="Enter last name">
+	          <input id = "lname" name = "lname" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter last name">
 	       </div>
 	       <div class="form-group">
 	          <label for="phone">Phone number(format XXXX-XXX-XXXX)</label>
-	          <input id="phone" type="text" class="form-control input-medium bfh-phone" type="tel"  placeholder="Enter phone number(format XXXX-XXX-XXXX)">
+	          <input id="phone" name ="phone" type="text" class="form-control input-medium bfh-phone" type="tel"  placeholder="Enter phone number(format XXXX-XXX-XXXX)">
 	       </div>
 		   <div class="form-group">
 			   <label for="email">Email</label>
-			   <input id="email" type="text" class="form-control input-medium bfh-phone" type="tel"  placeholder="Enter email">
+			   <input id="email" name ="email" type="text" class="form-control input-medium bfh-phone" type="tel"  placeholder="Enter email">
 		   </div>
 	       <div  class="form-group">
 	          <label for="password">Password</label>
-	          <input id = "password" type="password" class="form-control" id="password" placeholder="Enter password">
+	          <input id = "password" name ="password" type="password" class="form-control" placeholder="Enter password">
 	       </div>
 		   <div class="form-group">
 	          <label for="confirmPassword">Confirm Password</label>
-	          <input id = "confirmPasswrod" type="password" class="form-control" id="confirmPassword" placeholder="Confirm password">
+	          <input name = "confirmPassword" type="password" class="form-control" id="confirmPassword" placeholder="Confirm password">
 	       </div>
 	       <button type="submit" id="register-btn" class="btn btn-primary" style ="margin-left: 40%">Submit</button>
 	   </form>
